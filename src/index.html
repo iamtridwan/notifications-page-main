@@ -27,16 +27,13 @@
     .noBg{
       background-color: hsl(210, 60%, 98%) !important;
     }
-    .isVisible{
-      background-color: hsl(224, 21%, 14%);
-    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center">
   <main class="w-full md:w-[80%] lg:w-[60%] md:mx-auto bg-white rounded-md text-base p-6 md:p-4 my-10">
     <header class="flex items-center justify-between mb-4">
-      <h2 class="text-darkBlue font-semibold">
-        Notifications <span class="text-white px-2 rounded-md isVisible" id="noTag">3</span>
+      <h2 class="text-darkBlue font-semibold text-xl">
+        Notifications <span class="bg-darkBlue text-white px-2 rounded-md isVisible" id="noTag">3</span>
       </h2>
       <p class="text-sm font-light text-blue hover:cursor-pointer" id="mark">Mark all as read</p>
     </header>
@@ -147,21 +144,23 @@
     const noBgs = document.querySelectorAll(".noBg");
     const activeSpan = document.querySelectorAll(".isActive");
     const isVisible = document.getElementById("noTag")
+    const handleNotToggle = (element) => {
+      element.classList.toggle("isVisible");
+      if (isVisible.classList.contains("isVisible")) {
+        element.textContent = 3;
+      }else{
+        element.textContent = 0;
+      }
+
+    }
     mark.addEventListener("click", () => {
       activeSpan.forEach((span) => {
         span.classList.toggle("isActive");
       });
-      isVisible.classList.toggle("isVisible");
-      if (isVisible.classList.contains("isVisible")) {
-        isVisible.textContent = 3;
-        isVisible.style.color = "hsl(0, 0%, 100%)"
-      }else{
-        isVisible.textContent = 0;
-        isVisible.style.color = "hsl(224, 21%, 14%)"
-      }
       noBgs.forEach((bgs) => {
         bgs.classList.toggle("noBg");
       })
+      handleNotToggle(isVisible);
     })
   </script>
 </body>
