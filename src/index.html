@@ -25,7 +25,10 @@
       transform: translate(4px, -2px);
     }
     .noBg{
-      background-color: hsl(210, 60%, 98%);
+      background-color: hsl(210, 60%, 98%) !important;
+    }
+    .isVisible{
+      background-color: hsl(224, 21%, 14%);
     }
   </style>
 </head>
@@ -33,7 +36,7 @@
   <main class="w-full md:w-[80%] lg:w-[60%] md:mx-auto bg-white rounded-md text-base p-6 md:p-4 my-10">
     <header class="flex items-center justify-between mb-4">
       <h2 class="text-darkBlue font-semibold">
-        Notifications <span class="bg-darkBlue text-white px-2 rounded-md isVisible">3</span>
+        Notifications <span class="text-white px-2 rounded-md isVisible" id="noTag">3</span>
       </h2>
       <p class="text-sm font-light text-blue hover:cursor-pointer" id="mark">Mark all as read</p>
     </header>
@@ -143,14 +146,14 @@
     const mark = document.getElementById("mark");
     const noBgs = document.querySelectorAll(".noBg");
     const activeSpan = document.querySelectorAll(".isActive");
-    const isVisible = document.querySelector(".isVisible")
+    const isVisible = document.getElementById("noTag")
     mark.addEventListener("click", () => {
       activeSpan.forEach((span) => {
-        span.classList.remove("isActive");
+        span.classList.toggle("isActive");
       });
-      isVisible.style.display = "none"
+      isVisible.classList.toggle("isVisible");
       noBgs.forEach((bgs) => {
-        bgs.style.backgroundColor = "white"
+        bgs.classList.toggle("noBg");
       })
     })
   </script>
