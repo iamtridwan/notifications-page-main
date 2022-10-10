@@ -152,6 +152,13 @@
         span.classList.toggle("isActive");
       });
       isVisible.classList.toggle("isVisible");
+      if (isVisible.classList.contains("isVisible")) {
+        isVisible.textContent = 3;
+        isVisible.style.color = "hsl(0, 0%, 100%)"
+      }else{
+        isVisible.textContent = 0;
+        isVisible.style.color = "hsl(224, 21%, 14%)"
+      }
       noBgs.forEach((bgs) => {
         bgs.classList.toggle("noBg");
       })
