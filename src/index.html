@@ -29,7 +29,7 @@
     }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center ">
+<body class="flex flex-col items-center justify-center">
   <main class="w-full md:w-[80%] lg:w-[60%] md:mx-auto bg-white rounded-md text-base p-6 md:p-4 my-10">
     <header class="flex items-center justify-between mb-4">
       <h2 class="text-darkBlue font-semibold">
@@ -146,7 +146,7 @@
     const isVisible = document.querySelector(".isVisible")
     mark.addEventListener("click", () => {
       activeSpan.forEach((span) => {
-        span.classList.toggle("isActive");
+        span.classList.remove("isActive");
       });
       isVisible.style.display = "none"
       noBgs.forEach((bgs) => {
